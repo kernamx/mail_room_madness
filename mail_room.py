@@ -1,12 +1,9 @@
 """."""
 
 
-prompts_and_responses = {
-    "Would you like to send a thank you or create a repot?":
-    ['thank', 'report', 'quit'],
-    "Enter your name":
-    [""]
-}
+import sys
+import operator
+
 # first prompt is would you like to send a thank you or create a report.
 list_of_donors = []
 donation_history = {}
@@ -16,8 +13,7 @@ donation_history = {}
 
 def main():
     """Function runs once program is called, calls functions based on input."""
-    import sys
-    reply = raw_input("""Would you like to send a thank you or create a report?
+    reply = input("""Would you like to send a thank you or create a report?
 Enter 1 to send a thank you
 Enter 2 to create a report
 Enter 3 to quit this script""")
@@ -34,7 +30,7 @@ Enter 3 to quit this script""")
 
 def thank_you():
     """Once send thank you is selected, calls functions based on input."""
-    name = raw_input("""Enter the full name of the donator
+    name = input("""Enter the full name of the donator
 or enter list to see a list of all donators
 or type quit to return to the orignal prompt""")
     if type(name) == str:
@@ -44,84 +40,68 @@ or type quit to return to the orignal prompt""")
             main()
         else:
             check_name(name)
-            submit_donation(name)
+            enter_donation_amount(name)
     else:
         print('please enter a name')
         thank_you()
+
+
+def print_names():
+    """."""
+    for name in list_of_donors:
+        print(name)
+    thank_you()
 
 
 def check_name(name):
     """."""
     if name not in list_of_donors:
         list_of_donors.append(name)
+    if name not in donation_history:
+        donation_history[name] = []
 
 
 def enter_donation_amount(name):
     """Prompt the user for how much was donated, calls approprate function."""
-    donation_amount = raw_input("""Enter the amount of the donation
+    donation_amount = input("""Enter the amount of the donation
 or type quit to return to the orignal prompt""")
     if donation_amount == 'quit':
         main()
-    elif type(donation_amount) == int:
+    try:
         donation_amount = float(donation_amount)
-        add_donation_history(donation_amount, name)
-    elif type(donation_amount) == float:
-        add_donation_history(donation_amount, name)
-    else:
+    except ValueError:
         print('Please enter a valid donation amount')
         enter_donation_amount(name)
 
+    add_donation_history(donation_amount, name)
 
 
-def prompt_user(prompt, validator=None):
-    """Ask the user to select the opition, calls the function based on.
-
-     the input of the user.
-     """
-    reply = None
-    while reply is None:
-        reply = raw_input(prompt)  # asking user
-        if validate_input(reply):
-            return reply
-        else:
-            print("bad input")
-            get_user_input(prompt, validate=None)
-
-
-def validate_input(question, response, acceptable_responses):
-    """The function is checking if the user input is valid."""
-    # if the response is quit return to original prompt.
-    # if the response is quit at the original prompt then quit the script.
-    if response == good_response:
-        return True
-    else:
-        return False
-
-
-def response_to_user(input):
-    """Base on how the user response to the prompt will call the next function.  
-    If input == 'thank you':
-    call the thank_you function.  etc..."""
-
-
-def print_names():
-    print('list of names')
-    prompt_user(enter_name)
-
-
-def add_to_donations(name, amount):
-
-    # then added the amount to donation history .
-    # then print to the console thanking the user for donations.
-    # return the user to original prompt.
+def add_donation_history(amount, name):
+    """."""
+    print("""Thank you, {},
+for your generous donation of ${}""".format(name, amount))
+    donation_history[name].append(amount)
+    main()
 
 
 def create_report():
-    """This is going to print a list of donors sorted by total historical donation amount."""
-    # include donor name, total donated, number of donations and average donation amount as values in each row.
-    # print to the console a table with name, total amount, number of donations, average donation
-    # return the user back to original prompt.
-
-
-def sort_donors():
-    """This is going to sort the donation values from high to low."""
+    """Will print a list of donors sorted by amount donated."""
+    donation_information = []
+    for person in donation_history:
+        name = person
+        total_amount_donated = 0
+        number_of_donations = 0
+        for amount in donation_history[name]:
+            total_amount_donated += amount
+            number_of_donations += 1
+        average_donation = total_amount_donated / number_of_donations
+        donation_information.append((name, total_amount_donated,
+                                     number_of_donations, average_donation))
+    sorted_donations = sorted(donation_information,
+                              key=operator.itemgetter(1), reverse=True)
+    for person in sorted_donations:
+        print('''Name of donator: {}
+Total amount donated: {}
+Number of donations: {}
+Average donation: {}'''.format(person[0], person[1], person[2], person[3]))
+    main()
