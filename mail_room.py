@@ -17,12 +17,12 @@ donation_history = {}
 def main():
     """Function runs once program is called, calls functions based on input."""
     import sys
-    reply = raw_input("""Would you like to send a thank you or create a repot?
+    reply = raw_input("""Would you like to send a thank you or create a report?
 Enter 1 to send a thank you
 Enter 2 to create a report
 Enter 3 to quit this script""")
     if reply == '1':
-        check_name()
+        thank_you()
     elif reply == '2':
         create_report()
     elif reply == '3':
@@ -32,6 +32,21 @@ Enter 3 to quit this script""")
         main()
 
 
+def thank_you():
+    """Once send thank you is selected, calls functions based on input."""
+    name = raw_input("""Enter the full name of the donator
+or enter list to see a list of all donators
+or type quit to return to the orignal prompt""")
+    if type(name) == str:
+        if name == 'list':
+            print_names()
+        elif(name) == 'quit':
+            main()
+        else:
+            check_name()
+    else:
+        print('please enter a name')
+        thank_you()
 
 
 def prompt_user(prompt, validator=None):
@@ -69,12 +84,6 @@ def print_names():
     print('list of names')
     prompt_user(enter_name)
 
-
-def check_name(name):
-
-    if name_not_in_list:
-        list_of_donors.append(name)
-    prompt_user(donation_amount)
 
 def add_to_donations(name, amount):
 
