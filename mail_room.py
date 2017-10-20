@@ -28,7 +28,7 @@ Enter 3 to quit this script""")
     elif reply == '3':
         sys.exit
     else:
-        print("Bad input! See console for acceptable responses")
+        print('Bad input! See console for acceptable responses')
         main()
 
 
@@ -43,10 +43,34 @@ or type quit to return to the orignal prompt""")
         elif(name) == 'quit':
             main()
         else:
-            check_name()
+            check_name(name)
+            submit_donation(name)
     else:
         print('please enter a name')
         thank_you()
+
+
+def check_name(name):
+    """."""
+    if name not in list_of_donors:
+        list_of_donors.append(name)
+
+
+def enter_donation_amount(name):
+    """Prompt the user for how much was donated, calls approprate function."""
+    donation_amount = raw_input("""Enter the amount of the donation
+or type quit to return to the orignal prompt""")
+    if donation_amount == 'quit':
+        main()
+    elif type(donation_amount) == int:
+        donation_amount = float(donation_amount)
+        add_donation_history(donation_amount, name)
+    elif type(donation_amount) == float:
+        add_donation_history(donation_amount, name)
+    else:
+        print('Please enter a valid donation amount')
+        enter_donation_amount(name)
+
 
 
 def prompt_user(prompt, validator=None):
