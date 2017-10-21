@@ -62,7 +62,7 @@ def print_names():
         print(name)
     if not list_of_donors:
         print("""
-There are no donors in the sytem yet
+There are no donors in the system yet
 
 """)
     thank_you()
