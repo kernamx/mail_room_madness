@@ -6,7 +6,7 @@ import operator
 
 # first prompt is would you like to send a thank you or create a report.
 list_of_donors = []
-donation_history = {}
+donation_history = {'kevin': []}
 """"leave for user donation history.  keys will the the
                         users' name and values will be a list of donations."""
 
@@ -103,6 +103,13 @@ Thank you, {}, for your generous donation of ${}
 """.format(name, amount))
     donation_history[name].append(amount)
     main()
+
+
+def testable_add_donation_history(amount, name):
+    """Modify add testing donation history for testing."""
+    donation_history[name].append(amount)
+    return """Thank you, {}, for your generous donation of ${}
+""".format(name, amount)
 
 
 def create_report():

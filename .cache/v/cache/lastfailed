@@ -1,0 +1,4 @@
+{
+  "test_mail_room.py::test_add_donation_history": true,
+  "test_mail_room.py::test_print_names": true
+}
