@@ -1,58 +1,137 @@
 """."""
 
 
-protmpt = " " #multiple prompts
-#first prompt is would you like to send a thank you or create a report.
-list_of_donors = 
-donation_history = {} #leave for user donation history.  keys will the the users' name and values will be a list of donations.
+import sys
+import operator
 
-def get_user_input(prompt, validator=None):
-    """Ask the user to select the opition, calls the function based on the input of the user."""
-    reply = None  
-    while reply is None:
-        reply = raw_input(prompt)
-        if validate_input(reply):
-            return reply
-        else:
-            print("bad input")
-            get_user_input(prompt, validate=None)
+# first prompt is would you like to send a thank you or create a report.
+list_of_donors = []
+donation_history = {'kevin': []}  # the key-val inside of dict is for testing.
+""""leave for user donation history.  keys will the the
+                        users' name and values will be a list of donations."""
 
 
-def validate_input(response, acceptable_response):
-    """This is checking if the user input is valid."""
-    #if the response is quit return to original prompt.
-    #if the response is quit at the original prompt then quit the script.
-    if response == good response:
-        return True
+def main():
+    """Function runs once program is called, calls functions based on input."""
+    reply = input("""
+Would you like to send a thank you or create a report?
+Enter 1 to send a thank you
+Enter 2 to create a report
+Enter 3 to quit this script
+
+""")
+    if reply == '1':
+        thank_you()
+    elif reply == '2':
+        create_report()
+    elif reply == '3':
+        sys.exit()
     else:
-        return False
-
-
-def response_to_user(input):
-    """Base on how the user response to the prompt will call the next function.  
-    If input == 'thank you':
-    call the thank_you function.  etc..."""
-
-
+        print('''
+Bad input! See console for acceptable responses
+''')
+        main()
 
 
 def thank_you():
-    """This will create a thank you email and print it to the console."""
-    reply = raw_input("please enter your name.")
-    #if reply is not in list_of_donors then add the name to the list.
-    #prompt the user how much they want to donate.
-    #call the validate_input function to make sure they input a number.
-    #then added the amount to donation history .
-    #then print to the console thanking the user for donations.
-    #return the user to original prompt.
+    """Once send thank you is selected, calls functions based on input."""
+    name = input("""
+Enter the full name of the donator
+or enter list to see a list of all donators
+or type quit to return to the orignal prompt
+
+""")
+    if type(name) == str:
+        if name == 'list':
+            print_names()
+        elif(name) == 'quit':
+            main()
+        else:
+            check_name(name)
+            enter_donation_amount(name)
+    else:
+        print('''
+Please enter a name
+            ''')
+        thank_you()
+
+
+def print_names():
+    """."""
+    for name in list_of_donors:
+        print(name)
+    if not list_of_donors:
+        print("""
+There are no donors in the system yet
+
+""")
+    thank_you()
+
+
+def check_name(name):
+    """."""
+    if name not in list_of_donors:
+        list_of_donors.append(name)
+    if name not in donation_history:
+        donation_history[name] = []
+
+
+def enter_donation_amount(name):
+    """Prompt the user for how much was donated, calls approprate function."""
+    donation_amount = input("""
+Enter the amount of the donation or type quit to return to the orignal prompt
+
+""")
+    if donation_amount == 'quit':
+        main()
+    try:
+        donation_amount = float(donation_amount)
+    except ValueError:
+        print('''
+Please enter a valid donation amount
+
+''')
+        enter_donation_amount(name)
+
+    add_donation_history(donation_amount, name)
+
+
+def add_donation_history(amount, name):
+    """."""
+    print("""
+Thank you, {}, for your generous donation of ${}
+""".format(name, amount))
+    donation_history[name].append(amount)
+    main()
+
+
+def testable_add_donation_history(amount, name):
+    """Modify add testing donation history for testing."""
+    donation_history[name].append(amount)
+    return """Thank you, {}, for your generous donation of ${}
+""".format(name, amount)
 
 
 def create_report():
-    """This is going to print a list of donors sorted by total historical donation amount."""
-    #include donor name, total donated, number of donations and average donation amount as values in each row.
-    #print to the console a table with name, total amount, number of donations, average donation
-    #return the user back to original prompt.
-
-
-def sort_donors():
-    """This is going to sort the donation values from high to low."""
+    """Will print a list of donors sorted by amount donated."""
+    donation_information = []
+    for person in donation_history:
+        name = person
+        total_amount_donated = 0
+        number_of_donations = 0
+        for amount in donation_history[name]:
+            total_amount_donated += amount
+            number_of_donations += 1
+        average_donation = total_amount_donated / number_of_donations
+        donation_information.append((name, total_amount_donated,
+                                     number_of_donations, average_donation))
+    sorted_donations = sorted(donation_information,
+                              key=operator.itemgetter(1), reverse=True)
+    for person in sorted_donations:
+        print('''
+Name of donator: {}
+Total amount donated: {}
+Number of donations: {}
+Average donation: {}
+'''.format(person[0], person[1], person[2], person[3]))
+    main()
