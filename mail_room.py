@@ -6,7 +6,7 @@ import operator
 
 # first prompt is would you like to send a thank you or create a report.
 list_of_donors = []
-donation_history = {'kevin': []}
+donation_history = {'kevin': []}  # the key-val inside of dict is for testing.
 """"leave for user donation history.  keys will the the
                         users' name and values will be a list of donations."""
 
