@@ -10,7 +10,7 @@ def add_donor(name):
     """Add a donor to the list of donors is they are not already in it."""
     if name not in list_of_donors:
         list_of_donors.append(name)
-        donation_history[name] = []
+        donation_history[name] = [name, 0, 0, 0]
 
 
 def verify_donation(amount):
@@ -39,3 +39,11 @@ def list_donors():
             return string_start
     else:
         return "There are currently no donors"
+
+
+def add_donation(name, amount):
+    """Add a donation to the donation history."""
+    donation_history[name][0] = name
+    donation_history[name][1] += float(amount)
+    donation_history[name][2] += 1
+    donation_history[name][3] = donation_history[name][1] / donation_history[name][2]

@@ -25,8 +25,8 @@ def test_add_donor_already_in_list():
 
 def test_donation_history_updates_with_new_user():
     """If a new user is added, their donation history should be an empty dict."""
-    assert mail_room2.donation_history["Steve"] == []
-    assert mail_room2.donation_history["John"] == []
+    assert mail_room2.donation_history["Steve"] == ["Steve", 0, 0, 0]
+    assert mail_room2.donation_history["John"] == ["John", 0, 0, 0]
 
 
 def test_verify_amount_correct_string():
