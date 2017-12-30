@@ -72,9 +72,19 @@ Bad input! See console for acceptable responses
 
 def thank_you(name, amount):
     """Print out a thank you email for a donation."""
-    return "Thank you " + name + ", for your generous donation of $" + amount
+    return "Thank you {}, for your generous donation of ${}".format(name, amount)
 
 
 def create_report():
     """Crate a report of all donations."""
-    pass
+    sorted_donations = sorted(donation_history.items(), key=operator.itemgetter(1))
+    donation_string = ''
+    for donor in sorted_donations:
+        new_donor = ('''
+Name of donator: {}
+Total amount donated: {}
+Number of donations: {}
+Average donation: {}
+'''.format(donor[0], donor[1], donor[2], donor[3]))
+        donation_string += new_donor
+    return donation_string
