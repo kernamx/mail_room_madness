@@ -43,7 +43,31 @@ def list_donors():
 
 def add_donation(name, amount):
     """Add a donation to the donation history."""
-    donation_history[name][0] = name
     donation_history[name][1] += float(amount)
     donation_history[name][2] += 1
     donation_history[name][3] = donation_history[name][1] / donation_history[name][2]
+
+
+def mail_room():
+    """Run the mail room simulation."""
+    reply = input("""
+Would you like to send a thank you or create a report?
+Enter 1 to send a thank you
+Enter 2 to create a report
+Enter 3 to quit this script
+
+""")
+    if reply == '1':
+        thank_you()
+    elif reply == '2':
+        create_report()
+    elif reply == '3':
+        sys.exit()
+    else:
+        print('''
+Bad input! See console for acceptable responses
+''')
+        mail_room()
+
+
+def thank_you()
