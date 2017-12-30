@@ -70,4 +70,11 @@ Bad input! See console for acceptable responses
         mail_room()
 
 
-def thank_you()
+def thank_you(name, amount):
+    """Print out a thank you email for a donation."""
+    return "Thank you " + name + ", for your generous donation of $" + amount
+
+
+def create_report():
+    """Crate a report of all donations."""
+    pass

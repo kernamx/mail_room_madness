@@ -67,3 +67,9 @@ def test_add_third_donation_new_user():
     assert mail_room2.donation_history["John"][1] == 1
     assert mail_room2.donation_history["John"][2] == 1
     assert mail_room2.donation_history["John"][3] == 1
+
+
+def test_send_thank_you():
+    """Test email is printed correctly."""
+    res = mail_room2.thank_you("Bob", '1')
+    assert res == "Thank you Bob, for your generous donation of $1"
