@@ -1,6 +1,7 @@
 """Python module to simulate a mail room."""
 import sys
 import operator
+import pdb
 
 list_of_donors = []
 donation_history = {}
@@ -77,7 +78,8 @@ def thank_you(name, amount):
 
 def create_report():
     """Crate a report of all donations."""
-    sorted_donations = sorted(donation_history.items(), key=operator.itemgetter(1))
+    sorted_donations = sorted(donation_history.items(),
+                              key=operator.itemgetter(1), reverse=True)
     donation_string = ''
     for donor in sorted_donations:
         new_donor = ('''
@@ -85,6 +87,6 @@ Name of donator: {}
 Total amount donated: {}
 Number of donations: {}
 Average donation: {}
-'''.format(donor[0], donor[1], donor[2], donor[3]))
+'''.format(donor[1][0], donor[1][1], donor[1][2], donor[1][3]))
         donation_string += new_donor
     return donation_string

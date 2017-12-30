@@ -73,3 +73,9 @@ def test_send_thank_you():
     """Test email is printed correctly."""
     res = mail_room2.thank_you("Bob", '1')
     assert res == "Thank you Bob, for your generous donation of $1"
+
+
+def test_create_report_two_donors():
+    """Test that the donation report is correct with two donors."""
+    res = mail_room2.create_report()
+    assert res == '\nName of donator: Steve\nTotal amount donated: 110.0\nNumber of donations: 2\nAverage donation: 55.0\n\nName of donator: John\nTotal amount donated: 1.0\nNumber of donations: 1\nAverage donation: 1.0\n'
