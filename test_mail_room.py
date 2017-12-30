@@ -9,6 +9,11 @@ def test_list_donors_no_donors():
     assert mail_room2.list_donors() == "There are currently no donors"
 
 
+def test_create_report_no_donors():
+    """Should reflect that there are no donors in report."""
+    assert mail_room2.create_report() == "There are currently no donors"
+
+
 def test_add_donor():
     """Test adding a donor."""
     mail_room2.add_donor('John')

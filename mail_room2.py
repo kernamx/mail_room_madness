@@ -78,6 +78,8 @@ def thank_you(name, amount):
 
 def create_report():
     """Crate a report of all donations."""
+    if not donation_history:
+        return "There are currently no donors"
     sorted_donations = sorted(donation_history.items(),
                               key=operator.itemgetter(1), reverse=True)
     donation_string = ''
