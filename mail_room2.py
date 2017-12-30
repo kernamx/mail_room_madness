@@ -49,28 +49,6 @@ def add_donation(name, amount):
     donation_history[name][3] = donation_history[name][1] / donation_history[name][2]
 
 
-def mail_room():
-    """Run the mail room simulation."""
-    reply = input("""
-Would you like to send a thank you or create a report?
-Enter 1 to send a thank you
-Enter 2 to create a report
-Enter 3 to quit this script
-
-""")
-    if reply == '1':
-        thank_you()
-    elif reply == '2':
-        create_report()
-    elif reply == '3':
-        sys.exit()
-    else:
-        print('''
-Bad input! See console for acceptable responses
-''')
-        mail_room()
-
-
 def thank_you(name, amount):
     """Print out a thank you email for a donation."""
     return "Thank you {}, for your generous donation of ${}".format(name, amount)
@@ -92,3 +70,54 @@ Average donation: {}
 '''.format(donor[1][0], donor[1][1], donor[1][2], donor[1][3]))
         donation_string += new_donor
     return donation_string
+
+
+def mail_room():
+    """Run the mail room simulation."""
+    reply = input("""
+Would you like to send a thank you or create a report?
+Enter 1 to send a thank you
+Enter 2 to create a report
+Enter 3 to quit this script
+
+""")
+    if reply == '1':
+        enter_donor_name()
+    elif reply == '2':
+        create_report()
+        mail_room()
+    elif reply == '3':
+        sys.exit()
+    else:
+        print('''
+Bad input! See console for acceptable responses.
+''')
+        mail_room()
+
+
+def enter_donor_name():
+    """Prompt for entering donor's name."""
+    name = input("Please enter the donor's full name")
+    if name.lower() == 'list':
+        print(list_donors())
+        enter_donor_name()
+    elif name.lower() == 'q' or name.lower() == 'quit':
+        mail_room()
+    else:
+        add_donor(name)
+    enter_donation_amount(name)
+
+
+def enter_donation_amount(name):
+    """Prompt for entering donation amount."""
+    amount = input("Please enter the donation amount.")
+    if not verify_donation(amount):
+        print("Please enter a valid amount.")
+        enter_donation_amount(name)
+    add_donation(name, amount)
+    print(thank_you(name, amount))
+    mail_room()
+
+
+if __name__ == '__main__':
+    mail_room()
