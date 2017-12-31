@@ -59,7 +59,7 @@ def create_report():
     if not donation_history:
         return "There are currently no donors"
     sorted_donations = sorted(donation_history.items(),
-                              key=operator.itemgetter(1), reverse=True)
+                              key=operator.itemgetter(1))
     donation_string = ''
     for donor in sorted_donations:
         new_donor = ('''
@@ -84,7 +84,7 @@ Enter 3 to quit this script
     if reply == '1':
         enter_donor_name()
     elif reply == '2':
-        create_report()
+        print(create_report())
         mail_room()
     elif reply == '3':
         sys.exit()
@@ -97,7 +97,9 @@ Bad input! See console for acceptable responses.
 
 def enter_donor_name():
     """Prompt for entering donor's name."""
-    name = input("Please enter the donor's full name")
+    name = input("""
+Please enter the donor's full name
+""")
     if name.lower() == 'list':
         print(list_donors())
         enter_donor_name()
@@ -110,9 +112,13 @@ def enter_donor_name():
 
 def enter_donation_amount(name):
     """Prompt for entering donation amount."""
-    amount = input("Please enter the donation amount.")
+    amount = input("""
+Please enter the donation amount.
+""")
     if not verify_donation(amount):
-        print("Please enter a valid amount.")
+        print("""
+Please enter a valid amount.
+""")
         enter_donation_amount(name)
     add_donation(name, amount)
     print(thank_you(name, amount))
