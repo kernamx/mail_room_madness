@@ -1,0 +1,22 @@
+actionid: py27
+msg: getenv
+cmdargs: ['/home/max/codefellows/401/lab/mail_room_madness/.tox/py27/bin/pip', 'install', 'pytest', 'pytest-cov']
+
+Collecting pytest
+  Using cached pytest-3.3.1-py2.py3-none-any.whl
+Collecting pytest-cov
+  Using cached pytest_cov-2.5.1-py2.py3-none-any.whl
+Collecting py>=1.5.0 (from pytest)
+  Using cached py-1.5.2-py2.py3-none-any.whl
+Collecting six>=1.10.0 (from pytest)
+  Using cached six-1.11.0-py2.py3-none-any.whl
+Collecting funcsigs; python_version < "3.0" (from pytest)
+  Using cached funcsigs-1.0.2-py2.py3-none-any.whl
+Collecting pluggy<0.7,>=0.5 (from pytest)
+Requirement already satisfied: setuptools in ./.tox/py27/lib/python2.7/site-packages (from pytest)
+Collecting attrs>=17.2.0 (from pytest)
+  Using cached attrs-17.4.0-py2.py3-none-any.whl
+Collecting coverage>=3.7.1 (from pytest-cov)
+  Using cached coverage-4.4.2-cp27-cp27m-manylinux1_x86_64.whl
+Installing collected packages: py, six, funcsigs, pluggy, attrs, pytest, coverage, pytest-cov
+Successfully installed attrs-17.4.0 coverage-4.4.2 funcsigs-1.0.2 pluggy-0.6.0 py-1.5.2 pytest-3.3.1 pytest-cov-2.5.1 six-1.11.0

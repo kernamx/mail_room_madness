@@ -1,0 +1,12 @@
+actionid: py27
+msg: installpkg
+cmdargs: ['/home/max/codefellows/401/lab/mail_room_madness/.tox/py27/bin/pip', 'install', '/home/max/codefellows/401/lab/mail_room_madness/.tox/dist/mail-room-0.1.zip']
+
+Processing ./.tox/dist/mail-room-0.1.zip
+Building wheels for collected packages: mail-room
+  Running setup.py bdist_wheel for mail-room: started
+  Running setup.py bdist_wheel for mail-room: finished with status 'done'
+  Stored in directory: /home/max/.cache/pip/wheels/d6/9c/65/e9a134a1d7f7c6596b4e471ac3150586d00c6c066923fe0bec
+Successfully built mail-room
+Installing collected packages: mail-room
+Successfully installed mail-room-0.1

@@ -9,7 +9,7 @@ setup(
     author_email="maxawolff@hotmail.com",
     license='MIT',
     py_modules=['mail_room2'],
-    extras_require={'test': ['pytest', 'pytest-watch']},
+    extras_require={'test': ['pytest', 'pytest-watch', 'tox']},
     entry_points={
         'console_scripts': [
             "mailroom = mail_room2:mail_room"

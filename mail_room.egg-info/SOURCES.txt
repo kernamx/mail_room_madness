@@ -1,0 +1,8 @@
+mail_room2.py
+setup.py
+mail_room.egg-info/PKG-INFO
+mail_room.egg-info/SOURCES.txt
+mail_room.egg-info/dependency_links.txt
+mail_room.egg-info/entry_points.txt
+mail_room.egg-info/requires.txt
+mail_room.egg-info/top_level.txt

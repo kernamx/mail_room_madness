@@ -1,0 +1,42 @@
+actionid: tox
+msg: packaging
+cmdargs: ['/home/max/codefellows/401/lab/mail_room_madness/ENV/bin/python3.6', local('/home/max/codefellows/401/lab/mail_room_madness/setup.py'), 'sdist', '--formats=zip', '--dist-dir', local('/home/max/codefellows/401/lab/mail_room_madness/.tox/dist')]
+
+running sdist
+running egg_info
+writing mail_room.egg-info/PKG-INFO
+writing dependency_links to mail_room.egg-info/dependency_links.txt
+writing entry points to mail_room.egg-info/entry_points.txt
+writing requirements to mail_room.egg-info/requires.txt
+writing top-level names to mail_room.egg-info/top_level.txt
+reading manifest file 'mail_room.egg-info/SOURCES.txt'
+writing manifest file 'mail_room.egg-info/SOURCES.txt'
+warning: sdist: standard file not found: should have one of README, README.rst, README.txt
+
+running check
+warning: check: missing required meta-data: url
+
+creating mail-room-0.1
+creating mail-room-0.1/mail_room.egg-info
+copying files to mail-room-0.1...
+copying mail_room2.py -> mail-room-0.1
+copying setup.py -> mail-room-0.1
+copying mail_room.egg-info/PKG-INFO -> mail-room-0.1/mail_room.egg-info
+copying mail_room.egg-info/SOURCES.txt -> mail-room-0.1/mail_room.egg-info
+copying mail_room.egg-info/dependency_links.txt -> mail-room-0.1/mail_room.egg-info
+copying mail_room.egg-info/entry_points.txt -> mail-room-0.1/mail_room.egg-info
+copying mail_room.egg-info/requires.txt -> mail-room-0.1/mail_room.egg-info
+copying mail_room.egg-info/top_level.txt -> mail-room-0.1/mail_room.egg-info
+Writing mail-room-0.1/setup.cfg
+creating '.tox/dist/mail-room-0.1.zip' and adding 'mail-room-0.1' to it
+adding 'mail-room-0.1/setup.cfg'
+adding 'mail-room-0.1/mail_room2.py'
+adding 'mail-room-0.1/setup.py'
+adding 'mail-room-0.1/PKG-INFO'
+adding 'mail-room-0.1/mail_room.egg-info/SOURCES.txt'
+adding 'mail-room-0.1/mail_room.egg-info/entry_points.txt'
+adding 'mail-room-0.1/mail_room.egg-info/top_level.txt'
+adding 'mail-room-0.1/mail_room.egg-info/dependency_links.txt'
+adding 'mail-room-0.1/mail_room.egg-info/requires.txt'
+adding 'mail-room-0.1/mail_room.egg-info/PKG-INFO'
+removing 'mail-room-0.1' (and everything under it)

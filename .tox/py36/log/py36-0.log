@@ -1,0 +1,9 @@
+actionid: py36
+msg: getenv
+cmdargs: ['/home/max/codefellows/401/lab/mail_room_madness/ENV/bin/python3.6', '-m', 'virtualenv', '--python', '/home/max/codefellows/401/lab/mail_room_madness/ENV/bin/python3.6', 'py36']
+
+Already using interpreter /home/max/codefellows/401/lab/mail_room_madness/ENV/bin/python3.6
+Using base prefix '/usr'
+New python executable in /home/max/codefellows/401/lab/mail_room_madness/.tox/py36/bin/python3.6
+Also creating executable in /home/max/codefellows/401/lab/mail_room_madness/.tox/py36/bin/python
+Installing setuptools, pip, wheel...done.

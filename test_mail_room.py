@@ -83,4 +83,7 @@ def test_send_thank_you():
 def test_create_report_two_donors():
     """Test that the donation report is correct with two donors."""
     res = mail_room2.create_report()
-    assert res == '\nName of donator: Steve\nTotal amount donated: 110.0\nNumber of donations: 2\nAverage donation: 55.0\n\nName of donator: John\nTotal amount donated: 1.0\nNumber of donations: 1\nAverage donation: 1.0\n'
+    assert res == '\nName of donator: John\nTotal amount donated: 1.0\nNumber of donations: 1\nAverage donation: 1.0\n\nName of donator: Steve\nTotal amount donated: 110.0\nNumber of donations: 2\nAverage donation: 55.0\n'
+
+# list donors one donor
+# list donors greater than 2
