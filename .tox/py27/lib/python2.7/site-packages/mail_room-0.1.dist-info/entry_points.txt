@@ -1,3 +1,0 @@
-[console_scripts]
-mailroom = mail_room2:mail_room
-

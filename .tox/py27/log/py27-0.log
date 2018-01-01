@@ -1,8 +1,0 @@
-actionid: py27
-msg: getenv
-cmdargs: ['/home/max/codefellows/401/lab/mail_room_madness/ENV/bin/python3.6', '-m', 'virtualenv', '--python', '/usr/local/bin/python2.7', 'py27']
-
-New python executable in /home/max/codefellows/401/lab/mail_room_madness/.tox/py27/bin/python2.7
-Also creating executable in /home/max/codefellows/401/lab/mail_room_madness/.tox/py27/bin/python
-Installing setuptools, pip, wheel...done.
-Running virtualenv with interpreter /usr/local/bin/python2.7
