@@ -87,3 +87,18 @@ def test_create_report_two_donors():
 
 # list donors one donor
 # list donors greater than 2
+
+
+def test_list_donors_three_donors():
+    """Test output of list donors with > 3 donors."""
+    mail_room2.add_donor('Tim')
+    res = mail_room2.list_donors()
+    assert res == 'The current donors are John, Steve, and Tim'
+
+
+def test_list_donors_one_donor():
+    """Test output of list donors with 1 donors."""
+    mail_room2.list_of_donors = []
+    mail_room2.add_donor("Max")
+    res = mail_room2.list_donors()
+    assert res == "The only donor is Max"

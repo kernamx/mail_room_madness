@@ -33,7 +33,7 @@ def list_donors():
             return 'The current donors are ' + list_of_donors[0] + ' and ' + list_of_donors[1]
         elif len(list_of_donors) > 2:
             for idx, donor in enumerate(list_of_donors):
-                if idx < len(list_of_donors - 1):
+                if idx < len(list_of_donors) - 1:
                     string_start += (donor + ', ')
                 else:
                     string_start += ('and ' + donor)
@@ -125,5 +125,5 @@ Please enter a valid amount.
     mail_room()
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     mail_room()
